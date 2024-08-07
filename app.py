@@ -12,8 +12,8 @@ password = os.getenv('password')
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a secure key
 
-CREDENTIALS_FILE = '.credentials.txt'
-RESULTS_FILE = '.results.txt'
+CREDENTIALS_FILE = os.getenv('.credentials.txt')
+RESULTS_FILE = os.getenv('.results.txt')
 
 # Utility function to read credentials
 def read_credentials():
