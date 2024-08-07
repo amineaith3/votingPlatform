@@ -4,25 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Login</title>
+    <title>Contact Us</title>
 </head>
 <body>
-    <form class="form" method="POST">
-        <p>Login</p>
+    <h2>Contact Us</h2>
+    <form method="POST">
         <div class="group">
-          <input required="true" name="email" class="main-input" type="text">
-          <span class="highlight-span"></span>
-          <label class="lebal-email">Email</label>
-        </div>
-        <div class="container-1">
-          <div class="group">
-            <input required="true" name="password" class="main-input" type="password">
+            <input required="true" name="email" class="main-input" type="email">
             <span class="highlight-span"></span>
-            <label class="lebal-email">Password</label>
-          </div>
+            <label class="lebal-email">Email</label>
+        </div>
+        <div class="group">
+            <textarea required="true" name="message" class="main-input" rows="4"></textarea>
+            <span class="highlight-span"></span>
+            <label class="lebal-email">Message</label>
         </div>
         <button class="submit">Submit</button>
-      </form>
+    </form>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul>
@@ -33,7 +31,7 @@
         {% endif %}
     {% endwith %}
     <footer>
-        <a href="{{ url_for('contact') }}">Contact Us</a>
+        <a href="{{ url_for('login') }}">Return Home</a>
     </footer>
 </body>
 </html>

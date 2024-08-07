@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Vote</title>
+</head>
+<body>
+    <h2>Vote</h2>
+    <form method="POST">
+        <label>
+            <input type="radio" name="choice" value="Choice1" required> Choice 1
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="choice" value="Choice2" required> Choice 2
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="choice" value="Choice3" required> Choice 3
+        </label>
+        <br>
+        <button type="submit">Submit Vote</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <footer>
+        <a href="{{ url_for('contact') }}">Contact Us</a>
+    </footer>
+</body>
+</html>
