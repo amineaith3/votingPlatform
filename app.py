@@ -96,6 +96,11 @@ def vote(email):
 
     return render_template('vote.html', email=email)
 
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('error.html'), 500
+
+
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
