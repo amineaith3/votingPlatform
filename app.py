@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env file
 
-EMAIL = os.getenv('sender')
-EMAIL_PASSWORD = os.getenv('password')
+sender = os.getenv('sender')
+password = os.getenv('password')
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a secure key
 

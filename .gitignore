@@ -1,3 +1,4 @@
 .env
 .credentials.txt
 .results.txt
+venv
