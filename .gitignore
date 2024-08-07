@@ -1,4 +1,4 @@
 .env
 .credentials.txt
-.results.txt
 venv
+.results.txt
