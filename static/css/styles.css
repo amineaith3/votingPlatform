@@ -1,125 +1,175 @@
+/* General styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Container for options */
+.options-container {
+  width: 80%;
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual option styling */
+.option {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.option input[type="radio"] {
+  display: none;
+}
+
+.option label {
+  display: block;
+  cursor: pointer;
+}
+
+.option h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+.option p {
+  margin: 0;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Selected option styling */
+.option input[type="radio"]:checked + label {
+  background-color: #e0e0e0;
+  border-radius: 8px;
+}
+
+/* Last option should not have a border */
+.option:last-child {
+  border-bottom: none;
+}
+
+/* Submit button styling */
+button[type="submit"] {
+  background-color: #5264AE;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #4158B4;
+}
+
+/* General form styling */
+.form, .group {
+  width: 80%;
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .group {
-    position: relative;
-}
-
-.form {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    border: 1px solid white;
-    padding: 120px 40px;
-    padding-top: 60px;
-    padding-bottom: 90px;
-    padding-right: 40px;
-    padding-left: 40px;
-    background-color: black;
-    border-radius: 20px;
-    position: relative;
-}
-
-.form p {
-    padding-bottom: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: .5px;
-    color: white;
-}
-
-.container-1 {
-    padding-top: 30px;
+  position: relative;
+  margin-bottom: 45px;
 }
 
 .main-input {
-    font-size: 16px;
-    padding: 10px 10px 10px 5px;
-    display: block;
-    width: 185px;
-    border: none;
-    border-bottom: 1px solid #6c6c6c;
-    background: transparent;
-    color: #ffffff;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #757575;
+  outline: none;
+  font-size: 18px;
+  padding: 10px 0;
+  background: transparent;
+  color: #333;
 }
 
-.main-input:focus {
-    outline: none;
-    border-bottom-color: #42ff1c;
+.label-email {
+  color: #999;
+  font-size: 18px;
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  top: 10px;
+  transition: 0.2s ease all;
 }
 
-.lebal-email {
-    color: #999999;
-    font-size: 18px;
-    font-weight: normal;
-    position: absolute;
-    pointer-events: none;
-    left: 5px;
-    top: 10px;
-    transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -webkit-transition: 0.2s ease all;
-}
-
-.main-input:focus~.lebal-email,
-.main-input:valid~.lebal-email {
-    top: -20px;
-    font-size: 14px;
-    color: #42ff1c;
+.main-input:focus ~ .label-email, .main-input:valid ~ .label-email {
+  top: -20px;
+  font-size: 14px;
+  color: #5264AE;
 }
 
 .highlight-span {
-    position: absolute;
-    height: 60%;
-    width: 0px;
-    top: 25%;
-    left: 0;
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-.main-input:focus~.highlight-span {
-    -webkit-animation: input-focus 0.3s ease;
-    animation: input-focus 0.3s ease;
-}
-
-@keyframes input-focus {
-    from {
-        background: #42ff1c;
-    }
-
-    to {
-        width: 185px;
-    }
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .submit {
-    margin-top: 1.2rem;
-    padding: 10px 20px;
-    border-radius: 10px;
+  background-color: #5264AE;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
+.submit:hover {
+  background-color: #4158B4;
+}
+
+/* Flash messages styling */
+.flash-messages {
+  width: 80%;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.flash-message {
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Footer styling */
 footer {
-    margin-top: 2rem;
-    text-align: center;
-    background-color: black;
-    color: white;
-    padding: 1rem;
-    border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 footer a {
-    color: #42ff1c;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 
 footer a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }

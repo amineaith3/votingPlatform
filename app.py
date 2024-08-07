@@ -1,10 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import os
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from dotenv import load_dotenv
 
+load_dotenv()  # Load environment variables from .env file
+
+EMAIL = os.getenv('sender')
+EMAIL_PASSWORD = os.getenv('password')
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a secure key
 
-CREDENTIALS_FILE = '.credentiels.txt'
+CREDENTIALS_FILE = '.credentials.txt'
 RESULTS_FILE = '.results.txt'
 
 # Utility function to read credentials
@@ -28,6 +36,25 @@ def write_results(results):
     with open(RESULTS_FILE, 'w') as f:
         for choice, count in results.items():
             f.write(f"{choice},{count}\n")
+
+# Utility function to send email
+def send_email(subject, recipient, body):
+
+
+    msg = MIMEMultipart()
+    msg['From'] = sender
+    msg['To'] = recipient
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(sender, password)
+        server.sendmail(sender, recipient, msg.as_string())
+        server.quit()
+    except Exception as e:
+        print(f"Error: {e}")
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -59,18 +86,27 @@ def vote(email):
                 break
         write_credentials(credentials)
 
+        # Send confirmation email
+        subject = "Vote Confirmation"
+        body = f"Hello, we received your vote. You voted for {choice}. Thank you very much!"
+        send_email(subject, email, body)
+
         flash('Vote submitted successfully!')
         return redirect(url_for('login'))
 
-    return render_template('vote.html')
+    return render_template('vote.html', email=email)
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        name = request.form['name']
         email = request.form['email']
         message = request.form['message']
-        # Handle form submission (e.g., send email, save to database, etc.)
+        
+        # Send email to admin
+        subject = "Contact Form Submission"
+        body = f"Email: {email}\nMessage: {message}"
+        send_email(subject, "amineaithamma2004@gmail.com", body)
+
         flash('Thank you for contacting us!')
         return redirect(url_for('contact'))
     return render_template('contact.html')

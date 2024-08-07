@@ -1,3 +1,0 @@
-user1@example.com,password1,0
-user2@example.com,password2,0
-user3@example.com,password3,1
